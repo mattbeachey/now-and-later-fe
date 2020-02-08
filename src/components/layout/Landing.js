@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box } from "grommet";
 
 export default function() {
   return (
     <div style={{ height: "75vh" }}>
-      <Box align="center" justify="center">
+      <div align="center" justify="center">
         <h4>
           <b>Build</b> a login/auth app with the{" "}
           <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
@@ -40,7 +39,7 @@ export default function() {
             Log In
           </Link>
         </div>
-      </Box>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Grommet } from "grommet";
-import { normalizeColor } from "grommet/utils";
 import { rgba } from "polished";
 
 import Navbar from "./components/layout/Navbar";
@@ -18,7 +16,6 @@ import "./App.css";
 
 export default function() {
   return (
-    <Grommet >
       <Auth>
         <Router>
           <div className="App">
@@ -33,6 +30,5 @@ export default function() {
           </div>
         </Router>
       </Auth>
-    </Grommet>
   );
 }

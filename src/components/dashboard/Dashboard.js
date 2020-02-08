@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Box, Button } from "grommet";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -44,7 +43,7 @@ export default function Dashboard({ history }) {
           textAlign: "center"
         }}
       >
-        <Box direction="row" align="center" justify="center">
+        <div direction="row" align="center" justify="center">
           <div>
             <h4>
               <b>Hey there,</b> {user.name.split(" ")[0]}
@@ -53,19 +52,19 @@ export default function Dashboard({ history }) {
                 <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
               </p>
             </h4>
-            <Button
+            <button
               onClick={e => {
                 e.preventDefault();
                 logoutUser();
               }}
               label="Logout"
-            />
+            >Logout</button>
           </div>
-        </Box>
+        </div>
       </div>
-      <Box align="center" justify="center">
-        <Box align="center" justify="center">
-          <Button
+      <div align="center" justify="center">
+        <div align="center" justify="center">
+          <button
             onClick={e => {
               e.preventDefault();
               console.log("user", user, {
@@ -84,8 +83,8 @@ export default function Dashboard({ history }) {
                 .then(res => console.log(res));
             }}
             label="Start Game"
-          />
-        </Box>
+            >Start Game</button>
+        </div>
         <div>
           <h1>MY GAMES</h1>
           <div>
@@ -104,7 +103,7 @@ export default function Dashboard({ history }) {
                 <span to={`/games/${game._id}`}>
                   {game._id} => {game.game}
                 </span>
-                <Button
+                <button
                   onClick={() => {
                     axios({
                       url: `/api/v1/games/join/${game._id}`,
@@ -119,12 +118,12 @@ export default function Dashboard({ history }) {
                     });
                   }}
                   label="JOIN"
-                />
+                  >Join</button>
               </div>
             ))}
           </div>
         </div>
-      </Box>
+      </div>
     </>
   );
 }

@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
-import { Box, Button, FormField, TextInput } from "grommet";
-
 import { AuthContext } from "../../auth/auth";
 
 export default function Register({ history }) {
@@ -21,7 +19,7 @@ export default function Register({ history }) {
   }, [user, history]);
 
   return (
-    <Box justify="center" align="center" style={{ marginTop: "4rem" }}>
+    <div justify="center" align="center" style={{ marginTop: "4rem" }}>
       <Link to="/">Back to home</Link>
       <div style={{ paddingLeft: "11.250px" }}>
         <h4>
@@ -47,9 +45,9 @@ export default function Register({ history }) {
         }}
       >
         <div>
-          <FormField label="Name">
-            <TextInput
-              placeholder="type here"
+          <form label="Name">
+            <input
+              placeholder="Name"
               onChange={event => setName(event.target.value)}
               value={name}
               error={errors.name}
@@ -59,13 +57,13 @@ export default function Register({ history }) {
                 invalid: errors.name
               })}
             />
-          </FormField>
+          </form>
           <span style={{ color: "red" }}>{errors.name}</span>
         </div>
         <div>
-          <FormField label="Email">
-            <TextInput
-              placeholder="type here"
+          <form label="Email">
+            <input
+              placeholder="Email"
               onChange={event => setEmail(event.target.value)}
               value={email}
               error={errors.email}
@@ -75,13 +73,13 @@ export default function Register({ history }) {
                 invalid: errors.email
               })}
             />
-          </FormField>
+          </form>
           <span style={{ color: "red" }}>{errors.email}</span>
         </div>
         <div>
-          <FormField label="Password">
-            <TextInput
-              placeholder="type here"
+          <form label="Password">
+            <input
+              placeholder="Password"
               onChange={event => setPassword(event.target.value)}
               value={password}
               error={errors.password}
@@ -91,13 +89,13 @@ export default function Register({ history }) {
                 invalid: errors.password
               })}
             />
-          </FormField>
+          </form>
           <span style={{ color: "red" }}>{errors.password}</span>
         </div>
         <div>
-          <FormField label="Confirm Password">
-            <TextInput
-              placeholder="type here"
+          <form label="Confirm Password">
+            <input
+              placeholder="Confirm Password"
               onChange={event => setPassword2(event.target.value)}
               value={password2}
               error={errors.password2}
@@ -107,13 +105,13 @@ export default function Register({ history }) {
                 invalid: errors.password2
               })}
             />
-          </FormField>
+          </form>
           <span style={{ color: "red" }}>{errors.password2}</span>
         </div>
         <div style={{ paddingLeft: "11.250px" }}>
-          <Button type="submit" label="Sign up" />
+          <button type="submit" label="Sign up">Sign Up</button>
         </div>
       </form>
-    </Box>
+    </div>
   );
 }

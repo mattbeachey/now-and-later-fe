@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import { Box, Button, FormField, TextInput } from "grommet";
 import { AuthContext } from "../../auth/auth";
 
 export default function Login({ history }) {
@@ -19,7 +18,7 @@ export default function Login({ history }) {
   }, [user, history]);
 
   return (
-    <Box justify="center" align="center" style={{ marginTop: "4rem" }}>
+    <div justify="center" align="center" style={{ marginTop: "4rem" }}>
       <Link to="/">Back to home</Link>
       <div style={{ paddingLeft: "11.250px" }}>
         <h4>
@@ -43,9 +42,9 @@ export default function Login({ history }) {
         }}
       >
         <div>
-          <FormField label="Email">
-            <TextInput
-              placeholder="type here"
+          <form label="Email">
+            <input
+              placeholder="Email"
               onChange={e => setEmail(e.target.value)}
               value={email}
               error={errors.email}
@@ -55,7 +54,7 @@ export default function Login({ history }) {
                 invalid: errors.email || errors.emailnotfound
               })}
             />
-          </FormField>
+          </form>
 
           <span style={{ color: "red" }}>
             {errors.email}
@@ -63,9 +62,9 @@ export default function Login({ history }) {
           </span>
         </div>
         <div>
-          <FormField label="Password">
-            <TextInput
-              placeholder="type here"
+          <form label="Password">
+            <input
+              placeholder="Password"
               onChange={e => setPassword(e.target.value)}
               value={password}
               error={errors.password}
@@ -75,7 +74,7 @@ export default function Login({ history }) {
                 invalid: errors.password || errors.passwordincorrect
               })}
             />
-          </FormField>
+          </form>
 
           <span style={{ color: "red" }}>
             {errors.password}
@@ -83,10 +82,10 @@ export default function Login({ history }) {
           </span>
         </div>
         <div style={{ paddingLeft: "11.250px" }}>
-          <Button type="submit" label="login" />
+          <button type="submit" label="login">Login</button> 
         </div>
       </form>
-    </Box>
+    </div>
   );
 }
 
