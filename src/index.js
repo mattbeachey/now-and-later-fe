@@ -4,6 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import axios from "axios";
+
+// Health Check 
+axios.get("http://localhost:5000/ping").then(() => {
+    console.log("should be working")
+}).catch(()=> {
+    console.log("what happened")
+})
+
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
