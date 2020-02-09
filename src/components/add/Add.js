@@ -4,49 +4,55 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../auth/auth";
 
-export default function Add( {history}) {
+export default function Add({ history }) {
     const { user, logoutUser } = useContext(AuthContext);
-    const [url, setUrl] = useState()
-    const [title, setTitle] = useState()
-    const [notes, setNotes] = useState()
-    const [tags, setTags] = useState()
 
     const query = new URLSearchParams(window.location.search)
 
     const queryData = {}
 
     console.log("query param info " + query.get("data1"))
-    query.forEach(function(value, key){
+    query.forEach(function (value, key) {
         console.log(value, key)
         queryData[key] = value
     })
 
     console.log(queryData.url + "?t=" + queryData.t)
 
+    const videoData = {
+        url: queryData.url + "?t=" + queryData.t,
+        title: queryData.data1,
+        notes: queryData.data2,
+        tags: queryData.data2
+    }
+
+    //Docs for turning comma seperated values into array
+    //https://www.tutorialrepublic.com/faq/how-to-convert-comma-separated-string-into-an-array-in-javascript.php
+
     useEffect(() => {
-        // If logged in and user navigates to Login page, should redirect them to dashboard
+        // when redirected to /add, query params come through with the url
         if (user) {
-          history.push("/add" + window.location.search);
+            history.push("/add" + window.location.search);
+            axios.post(`/api/additem/${user.id}`, videoData).then((res) => {
+                console.log(res)
+            }).catch(() => {
+                console.log("what happened")
+            })
         }
-      }, [user, history]);
+    }, [user, history]);
 
     return (
         <>
             <div>Hello {user.name}</div>
-            {/* <input placeholder="timestamp url"/>
-            <input placeholder="title"/>
-            <input placeholder="notes"/>
-            <input placeholder="tags"/> */}
             <button
-                  onClick={() => {
-                    axios.get("/ping").then(() => {
-                        console.log("should be working")
-                    }).catch(()=> {
+                onClick={() => {
+                    axios.post(`/api/additem/${user.id}`, videoData).then((res) => {
+                        console.log(res)
+                    }).catch(() => {
                         console.log("what happened")
                     })
-                  }}
-                  label="JOIN"
-                  >Add</button>
+                }}
+            >Add</button>
             <button
                 onClick={e => {
                     e.preventDefault();
@@ -57,9 +63,9 @@ export default function Add( {history}) {
         </>
 
     )
-} 
+}
 
 Add.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
-  };
+};
