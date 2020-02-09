@@ -13,7 +13,7 @@ export default function Login({ history }) {
   useEffect(() => {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (user) {
-      history.push("/dashboard");
+      history.push("/add" + window.location.search);
     }
   }, [user, history]);
 

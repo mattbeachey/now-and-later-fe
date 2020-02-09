@@ -67,7 +67,7 @@ export function useAuth() {
         logoutUser(setUser);
 
         // Redirect to login
-        window.location.href = "./login";
+        // window.location.href = "./login";
       }
     }
   }, []);

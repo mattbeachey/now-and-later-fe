@@ -38,7 +38,7 @@ export default function Game({ match }) {
                 ? () => {}
                 : () =>
                     axios({
-                      url: `/api/v1/games/${game._id}`,
+                      url: `http://localhost:5000/api/v1/games/${game._id}`,
                       method: "PUT",
                       data: {
                         // x: game.x,

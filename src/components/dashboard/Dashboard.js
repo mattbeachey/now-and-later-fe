@@ -7,6 +7,7 @@ import { AuthContext } from "../../auth/auth";
 
 export default function Dashboard({ history }) {
   const { user, logoutUser } = useContext(AuthContext);
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + user.name)
 
   const [games, setGames] = useState({
     my: [],
@@ -106,7 +107,7 @@ export default function Dashboard({ history }) {
                 <button
                   onClick={() => {
                     axios({
-                      url: `/api/v1/games/join/${game._id}`,
+                      url: `http://localhost:5000/api/v1/games/join/${game._id}`,
                       method: "PUT",
                       data: {
                         ...game,
