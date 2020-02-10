@@ -14,7 +14,7 @@ export default function Register({ history }) {
   useEffect(() => {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (user) {
-      history.push("/dashboard");
+      history.push("/dashboard" + window.location.search);
     }
   }, [user, history]);
 

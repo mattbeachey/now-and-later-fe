@@ -13,9 +13,12 @@ export default function Login({ history }) {
   useEffect(() => {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (user) {
-      history.push("/add" + window.location.search);
+      history.push("/dashboard" + window.location.search);
     }
   }, [user, history]);
+
+  //register redirect location with query params intact
+  const registerURL = "/register" + window.location.search
 
   return (
     <div justify="center" align="center" style={{ marginTop: "4rem" }}>
@@ -25,7 +28,7 @@ export default function Login({ history }) {
           <b>Login</b> below
         </h4>
         <p>
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to={registerURL}>Register</Link>
         </p>
       </div>
       <form

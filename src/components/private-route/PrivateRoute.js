@@ -6,12 +6,13 @@ import { AuthContext } from "../../auth/auth";
 
 export default function PrivateRoute({ component: Component, ...rest }) {
   const { user } = useContext(AuthContext);
+  debugger
   console.log(rest)
   return (
     <Route
       {...rest}
       render={props =>
-        user ? <Component {...props} /> : <Redirect to={"/login" + rest.location.search} />
+        user ? <Component {...props} /> : <Redirect to={"/login?" + rest.location.search.substr(1) + "&dest=" + window.location} />
       }
     />
   );

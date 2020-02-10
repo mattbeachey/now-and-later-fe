@@ -6,6 +6,7 @@ import { AuthContext } from "../../auth/auth";
 
 export default function Add({ history }) {
     const { user, logoutUser } = useContext(AuthContext);
+    console.log("Add component" , user)
 
     const query = new URLSearchParams(window.location.search)
 
