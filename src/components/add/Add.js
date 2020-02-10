@@ -19,11 +19,13 @@ export default function Add({ history }) {
 
     console.log(queryData.url + "?t=" + queryData.t)
 
+    const tagsArray = queryData.data1.split(',')
+
     const videoData = {
         url: queryData.url + "?t=" + queryData.t,
-        title: queryData.data1,
+        title: queryData.data2,
         notes: queryData.data2,
-        tags: queryData.data2
+        tags: tagsArray
     }
 
     //Docs for turning comma seperated values into array
@@ -33,7 +35,7 @@ export default function Add({ history }) {
         // when redirected to /add, query params come through with the url
         if (user) {
             history.push("/add" + window.location.search);
-            axios.post(`/api/additem/${user.id}`, videoData).then((res) => {
+            axios.put(`/api/items/add/${user.id}`, videoData).then((res) => {
                 console.log(res)
             }).catch(() => {
                 console.log("what happened")
@@ -46,7 +48,7 @@ export default function Add({ history }) {
             <div>Hello {user.name}</div>
             <button
                 onClick={() => {
-                    axios.post(`/api/additem/${user.id}`, videoData).then((res) => {
+                    axios.put(`/api/items/add/${user.id}`, videoData).then((res) => {
                         console.log(res)
                     }).catch(() => {
                         console.log("what happened")

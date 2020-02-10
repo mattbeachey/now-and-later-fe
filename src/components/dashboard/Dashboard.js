@@ -7,47 +7,32 @@ import { AuthContext } from "../../auth/auth";
 
 export default function Dashboard({ history }) {
   const { user, logoutUser } = useContext(AuthContext);
-  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + user.name)
+  const [userVideos, setUserVideos] = useState([])
 
-  const [games, setGames] = useState({
-    my: [],
-    open: []
-  });
+
   useEffect(() => {
-    setTimeout(() => {
-      fetch(`/api/v1/games/my-games/${user.id}`)
-        .then(res => res.json())
-        .then(res1 => {
-          fetch(`/api/v1/games/open-games`)
-            .then(res => res.json())
-            .then(res2 => {
-              console.log(res1);
-              console.log(res2);
-              setGames({
-                my: res1.games,
-                open: res2.games
-              });
-            });
-        });
-    }, 1000);
+      axios.get(`/api/items/get/${user.id}`)
+      .then( data => {
+        console.log(data.data.saved_timestamps)
+        setUserVideos(data.data.saved_timestamps) 
+      })
   }, []);
 
-  console.log("wwwtttfff");
   return (
     <>
       <div
         style={{
-          height: "50vh",
+          height: "80vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          textAlign: "center"
+          textAlign: "center",
         }}
       >
         <div direction="row" align="center" justify="center">
           <div>
             <h4>
-              <b>Hey there,</b> {user.name.split(" ")[0]}
+              <b>Welcome</b> {user.name.split(" ")[0]}
               <p>
                 You are logged into a full-stack{" "}
                 <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
@@ -60,68 +45,13 @@ export default function Dashboard({ history }) {
               }}
               label="Logout"
             >Logout</button>
-          </div>
-        </div>
-      </div>
-      <div align="center" justify="center">
-        <div align="center" justify="center">
-          <button
-            onClick={e => {
-              e.preventDefault();
-              console.log("user", user, {
-                x: user.id
-              });
-              fetch("/api/v1/games", {
-                method: "POST",
-                body: JSON.stringify({
-                  x: user.id
-                }),
-                headers: {
-                  "Content-Type": "application/json"
-                }
-              })
-                .then(res => res.json())
-                .then(res => console.log(res));
-            }}
-            label="Start Game"
-            >Start Game</button>
-        </div>
-        <div>
-          <h1>MY GAMES</h1>
-          <div>
-            {games.my.map(game => (
-              <div>
-                <Link to={`/games/${game._id}`}>
-                  {game._id} => {game.game}
-                </Link>
-              </div>
-            ))}
-          </div>
-          <h1>OPEN GAMES</h1>
-          <div>
-            {games.open.map(game => (
-              <div>
-                <span to={`/games/${game._id}`}>
-                  {game._id} => {game.game}
-                </span>
-                <button
-                  onClick={() => {
-                    axios({
-                      url: `http://localhost:5000/api/v1/games/join/${game._id}`,
-                      method: "PUT",
-                      data: {
-                        ...game,
-                        o: user.id
-                      }
-                    }).then(res => {
-                      console.log(res);
-                      history.push(`/games/${game._id}`);
-                    });
-                  }}
-                  label="JOIN"
-                  >Join</button>
-              </div>
-            ))}
+            <div>
+              {userVideos.map( video => (
+                <ol>
+                  <li>{video.title}: {video.notes} <a href={video.url} target="black">Link</a></li>
+                </ol>
+              ))}
+            </div>
           </div>
         </div>
       </div>
