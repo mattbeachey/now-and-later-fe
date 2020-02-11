@@ -28,6 +28,7 @@ export default function Add({ history }) {
     const videoData = {
         url: queryData.url + "?t=" + queryData.t,
         videoThumbnail: "https://img.youtube.com/vi/" + videoCode + "/0.jpg",
+        videoName: queryData.videoName,
         title: queryData.title,
         notes: queryData.notes,
         tags: tagsArray
