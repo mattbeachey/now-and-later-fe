@@ -41,7 +41,7 @@ export const loginUser = (setUser, setErrors) => userData => {
 export const registerUser = setErrors => (userData, history) => {
   axios
     .post("http://localhost:5000/api/users/register", userData)
-    .then(res => history.push("/login"))
+    .then(res => history.push("/login" + window.location.search))
     .catch(err => {
       console.log(err);
       setErrors(err.response.data);
