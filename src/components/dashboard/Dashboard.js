@@ -8,7 +8,6 @@ import { AuthContext } from "../../auth/auth";
 export default function Dashboard({ history, location }) {
   const { user, logoutUser } = useContext(AuthContext);
   const [userVideos, setUserVideos] = useState([])
-  console.log(user)
 
   if (user){
     const query = new URLSearchParams(location.search)
@@ -36,6 +35,16 @@ export default function Dashboard({ history, location }) {
         setUserVideos(data.data.saved_timestamps)
       })
   }, []);
+
+  function deleteItem (id) {
+    console.log("deleted video's user id: " + user.id)
+    axios.delete(`/api/items/delete/${id}-${user.id}`)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err =>
+      console.log(err))
+  }
 
   return (
     <>
@@ -67,7 +76,9 @@ export default function Dashboard({ history, location }) {
             <div>
               {userVideos.map(video => (
                 <ol>
-                  <li><img src={video.videoThumbnail} width="200px" alt="video thumbnail"/>{video.title}: {video.notes} <a href={video.url} target="black">Link</a></li>
+                  <li><img src={video.videoThumbnail} width="200px" alt="video thumbnail"/>
+                  {video.title}: {video.notes} <a href={video.url} target="black">Link</a>
+                  <div onClick={() => deleteItem(video._id)}>X</div></li>
                 </ol>
               ))}
             </div>

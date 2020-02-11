@@ -42,6 +42,12 @@ export default function Add({ history }) {
             history.push("/add" + window.location.search);
             axios.put(`/api/items/add/${user.id}`, videoData).then((res) => {
                 console.log(res)
+                // chrome.runtime.sendMessage({
+                //     data: "Hello popup, how are you"
+                // }, function (response) {
+                //     console.dir(response);
+                // });
+                window.close();
             }).catch(() => {
                 console.log("what happened")
             })
@@ -50,7 +56,7 @@ export default function Add({ history }) {
 
     return (
         <>
-            <div>Hello {user.name}</div>
+            <div>Hello {user.name}, your video timestamp has been saved! See all saved timestamps here.</div>
             <button
                 onClick={() => {
                     axios.put(`/api/items/add/${user.id}`, videoData).then((res) => {

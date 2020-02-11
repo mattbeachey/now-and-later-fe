@@ -1,11 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import classnames from "classnames";
+
 import { AuthContext } from "../../auth/auth";
 
 export default function Login({ history }) {
-  // todo: errors my friend...
   const { user, loginUser, errors = {} } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,9 +52,7 @@ export default function Login({ history }) {
               error={errors.email}
               id="email"
               type="email"
-              className={classnames("", {
-                invalid: errors.email || errors.emailnotfound
-              })}
+
             />
           </form>
 
@@ -73,9 +70,7 @@ export default function Login({ history }) {
               error={errors.password}
               id="password"
               type="password"
-              className={classnames("", {
-                invalid: errors.password || errors.passwordincorrect
-              })}
+
             />
           </form>
 
