@@ -67,7 +67,7 @@ export default function Dashboard({ history, location }) {
             <div>
               {userVideos.map(video => (
                 <ol>
-                  <li>{video.title}: {video.notes} <a href={video.url} target="black">Link</a></li>
+                  <li><img src={video.videoThumbnail} width="200px" alt="video thumbnail"/>{video.title}: {video.notes} <a href={video.url} target="black">Link</a></li>
                 </ol>
               ))}
             </div>

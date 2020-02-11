@@ -21,9 +21,13 @@ export default function Add({ history }) {
     console.log(queryData.url + "?t=" + queryData.t)
 
     const tagsArray = queryData.data1.split(',')
+    const videoCode = queryData.url.split('be/')[1]
+
+    console.log("VIDEO CODE>>>>>>>>>>>>>" + queryData.url.split('be/')[1])
 
     const videoData = {
         url: queryData.url + "?t=" + queryData.t,
+        videoThumbnail: "https://img.youtube.com/vi/" + videoCode + "/maxresdefault.jpg",
         title: queryData.data2,
         notes: queryData.data2,
         tags: tagsArray

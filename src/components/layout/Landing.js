@@ -1,7 +1,18 @@
-import React from "react";
+import React, {useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../auth/auth";
 
-export default function() {
+export default function({ history }) {
+
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (user) {
+      history.push("/dashboard" + window.location.search);
+    }
+  }, [user, history]);
+
   return (
     <div style={{ height: "75vh" }}>
       <div align="center" justify="center">
