@@ -19,18 +19,19 @@ export default function Register({ history }) {
   }, [user, history]);
 
   return (
-    <div className="mainCont2">
-      <div justify="center" align="center" style={{ marginTop: "4rem" }}>
-        <Link to="/">Back to home</Link>
+    <div className="mainCont3">
+    <div style={{ height: "75vh" }}>
+      <div className="headerBig">Now </div>
+      <div className="headerBig">and Later</div>
+      
+        <Link to="/" className="landingLink">Back to home</Link>
         <div style={{ paddingLeft: "11.250px" }}>
-          <h4>
-            <b>Register</b> below
-        </h4>
-          <p>
-            Already have an account? <Link to="/login">Log in</Link>
-          </p>
+        <h3 className="landing">
+            Already have an account? <Link to="/login" className="landingLink">Log in</Link>
+          </h3>
         </div>
         <form
+          className="loginForms"
           noValidate
           onSubmit={e => {
             e.preventDefault();
@@ -62,7 +63,7 @@ export default function Register({ history }) {
             <span style={{ color: "red" }}>{errors.name}</span>
           </div>
           <div>
-            <form label="Email">
+            <form label="Email" className="loginForms">
               <input
                 placeholder="Email"
                 onChange={event => setEmail(event.target.value)}
@@ -78,7 +79,7 @@ export default function Register({ history }) {
             <span style={{ color: "red" }}>{errors.email}</span>
           </div>
           <div>
-            <form label="Password">
+            <form label="Password" className="loginForms">
               <input
                 placeholder="Password"
                 onChange={event => setPassword(event.target.value)}
@@ -94,7 +95,7 @@ export default function Register({ history }) {
             <span style={{ color: "red" }}>{errors.password}</span>
           </div>
           <div>
-            <form label="Confirm Password">
+            <form label="Confirm Password" className="loginForms">
               <input
                 placeholder="Confirm Password"
                 onChange={event => setPassword2(event.target.value)}

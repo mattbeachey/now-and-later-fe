@@ -3,6 +3,56 @@
     top: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(180deg, rgb(88, 173, 197) 0%, rgb(164, 205, 214) 45%, rgb(124, 172, 117) 100%);
+    background: linear-gradient(180deg, rgb(88, 173, 197) 0%, rgb(164, 205, 214) 50%, rgb(124, 172, 117) 100%);
     /* background: linear-gradient(180deg, rgba(62,140,162,1) 0%, rgba(146,189,197,1) 56%, rgba(236,241,235,1) 100%); */
+}
+
+.headerBig{
+    margin-top: -10vh;
+    font-size: 120px;
+    color: #4e4e4e;
+    font-family: Calistoga;
+    text-align: center;
+    white-space: pre;
+}
+
+.mainCont3 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: thistle;
+}
+
+.landingBox {
+    width: 40vw;
+    background-color: rgba(255, 255, 255, 0.192);
+    border-radius: 8px;
+    padding: 2px;
+    transition: .5s;
+}
+
+.landingBox:hover {
+    box-shadow:  0 -2px 9px 5px #ecf1eb4f;
+    transition: .5s;
+}
+
+.landing {
+    color: #4e4e4e;
+}
+
+.landingLink {
+    color: rgb(115, 160, 173);
+    font-size: 20px;
+    transition: .4s;
+}
+
+.landingLink:hover{
+    color: rgb(138, 199, 216);
+    transition: .4s;
+}
+
+.loginForms {
+    margin: 10px;
 }
