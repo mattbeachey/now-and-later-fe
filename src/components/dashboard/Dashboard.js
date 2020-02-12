@@ -104,7 +104,7 @@ export default function Dashboard({ history, location }) {
               handleDelete={() => deleteItem(video._id)}
               handleSetVideos={setUserVideos}
               handleFilter={filterByTag}
-              number={video._id.charAt(video._id.length - 1)}
+              number={video._id.charAt(video._id.length - 1).charCodeAt(0)}
             />
           ))}
         </div>

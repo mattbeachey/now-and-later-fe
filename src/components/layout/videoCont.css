@@ -23,9 +23,46 @@
 }
 
 .thumbnail {
-    height: 200px;
+    height: 182px;
+    border: 9px solid #286d8070;
 }
 
 .contentCont{
     flex-grow: 1;
+    display: flex;
+}
+
+.leftSide, .rightSide {
+    width: 50%
+}
+
+.leftSide {
+    /* border: 2px solid black; */
+
+}
+
+.notes{
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 90%;
+    height: 145px;
+    background-color: rgba(255, 255, 255, 0.288);
+    overflow: auto; 
+    text-align: left;
+    padding: 10px;
+   
+}
+
+.delete {
+    margin-top: 2px;
+    font-size: 14px;
+}
+
+.delete:hover {
+    color: #3e8ca2c4;
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, p, a {
+    font-family: 'Tomorrow', sans-serif;
 }

@@ -13,7 +13,7 @@ export default function Topbar({ handleChange, handleReturn }){
         <div className="main">
             <div className="header">Now and Later</div>
             <input className="searchInput" onChange={handleChange} placeholder="Search by name" />
-            <button onClick={handleReturn}>Bring Back All</button>
+            <button onClick={handleReturn}>Show All</button>
             <h2>Welcome {user.name.split(" ")[0]}</h2>
             <button onClick={e => {
               e.preventDefault();

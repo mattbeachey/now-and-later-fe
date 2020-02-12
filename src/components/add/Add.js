@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../auth/auth";
+import "./add.css";
 
 export default function Add({ history }) {
     const { user, logoutUser } = useContext(AuthContext);
@@ -62,6 +63,12 @@ export default function Add({ history }) {
     return (
         <>
         <div className="mainCont2">
+        <div className="gif-cont">
+            <div className="loadText">Loading...</div>
+            <img className="gif-cont" src="https://media3.giphy.com/media/hQgJCEdGOEHa8/source.gif" alt="loading"/>
+        </div>
+
+
             {/* <div>Hello {user.name}, your video timestamp has been saved! See all saved timestamps here.</div>
             <button
                 onClick={() => {
