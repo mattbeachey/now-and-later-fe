@@ -70,6 +70,7 @@ export default function Dashboard({ history, location }) {
   function searchFilter(value) {
     const array = userVideos.slice().filter(function (video) {
       const final = video.title.toLowerCase();
+      console.log("Key change??? " + value)
       return final.indexOf(value.toLowerCase()) > -1
     })
     setUserVideos(array)
@@ -92,31 +93,20 @@ export default function Dashboard({ history, location }) {
       />
       <div className="mainCont">
         <div>
-          <h4>
-            <b>Welcome</b> {user.name.split(" ")[0]}
-          </h4>
-          <button
-            onClick={e => {
-              e.preventDefault();
-              logoutUser();
-            }}
-            label="Logout"
-          >Logout</button>
-          <div>
-            {userVideos.map(video => (
-              <VideoCont
-                image={video.videoThumbnail}
-                userTitle={video.title}
-                notes={video.notes}
-                origName={video.videoName}
-                url={video.url}
-                tags={video.tags}
-                handleDelete={() => deleteItem(video._id)}
-                handleSetVideos={setUserVideos}
-                handleFilter={filterByTag}
-              />
-            ))}
-          </div>
+          {userVideos.map(video => (
+            <VideoCont
+              image={video.videoThumbnail}
+              userTitle={video.title}
+              notes={video.notes}
+              origName={video.videoName}
+              url={video.url}
+              tags={video.tags}
+              handleDelete={() => deleteItem(video._id)}
+              handleSetVideos={setUserVideos}
+              handleFilter={filterByTag}
+              number={video._id.charAt(video._id.length - 1)}
+            />
+          ))}
         </div>
       </div>
       <div className="bottomSpace"></div>

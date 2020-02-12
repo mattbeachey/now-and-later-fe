@@ -1,4 +1,4 @@
-.mainContainer {
+.mainContainer, .mainContainer1, .mainContainer2, .mainContainer3, .mainContainer4 {
     height: 200px;
     width: 95vw;
     margin-top: 15px;
@@ -8,6 +8,18 @@
     justify-content: flex-start;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.mainContainer2{
+    background-color: rgba(238, 188, 245, 0.781); 
+}
+
+.mainContainer3{
+    background-color: rgba(233, 173, 165, 0.781); 
+}
+
+.mainContainer4{
+    background-color: rgba(233, 220, 163, 0.781); 
 }
 
 .thumbnail {

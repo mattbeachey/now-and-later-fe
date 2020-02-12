@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useContext, useState, useEffect }  from "react";
 import "./videoCont.css";
 
 
-function VideoCont({ image, userTitle, notes, origName, url, tags, handleDelete, handleSetVideos, handleFilter }) {
+function VideoCont({ image, userTitle, notes, origName, url, tags, number, handleDelete, handleSetVideos, handleFilter }) {
+
+    const [cardClass, setCardClass] = useState("mainContainer")
+
+    useEffect(() => {
+        if (number%2 === 0){
+            if (number%4 === 0){
+                setCardClass("mainContainer1")
+            } else {
+                setCardClass("mainContainer2")
+            }
+            
+        }
+        else {
+            if ((--number)%4 === 0){
+                setCardClass("mainContainer3")
+            } else {
+                setCardClass("mainContainer4")
+            }
+            
+        }
+    }, [number])
+
+    
 
 
     return (
-        <div className="mainContainer">
+        <div className={cardClass}>
             <div className="imgCont">
                 <a href={url} target="blank">
                     <img className="thumbnail" src={image} alt="video thumbnail" />
