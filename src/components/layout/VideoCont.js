@@ -36,16 +36,18 @@ function VideoCont({ image, userTitle, notes, origName, url, tags, number, handl
             </div>
             <div className="contentCont">
                 <div className="leftSide">
-                    <h1>{userTitle}</h1>
-                    <h5>{origName}</h5>
-                    <a href={url} target="blank">Link</a>
+                    <a href={url} target="blank"><h1>{userTitle}</h1></a>
+                    <div className="tagsHolder">
+                        <div className="bolded">Tags: </div>
                     {tags.map(tag => (
-                        <div onClick={() => handleSetVideos(handleFilter(tag))}>{tag}</div>
+                        <div onClick={() => handleSetVideos(handleFilter(tag))}>{tag} </div>
                     ))}
+                    </div>
+                    <h5>Original Video: {origName}</h5>
                 </div>
                 <div className="rightSide">
                     <div className="notes">
-                        <p>Notes:</p> 
+                        <p>Notes:</p>
                         <p>{notes}</p>
                     </div>
                     <p className="delete" onClick={handleDelete}>Delete this video</p>

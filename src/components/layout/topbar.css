@@ -1,8 +1,67 @@
 .main {
     width: 100%;
-    min-height: 20vh;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* background-color: #bde2ec; */
 }
+
+.welcome {
+    color: rgb(236, 236, 236);
+}
+
+.scndRow {
+    display: flex;
+    min-width: 75vw;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+input {
+    font-family: 'Tomorrow', sans-serif;
+    text-align: center;
+    width: 600px;
+    font-size: 30px;
+    color: #3e8ca2;
+    background-color: #ecf1eb;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    transition: .5s;
+}
+
+input:focus, input:hover {
+    box-shadow:  0 -2px 9px 5px #ecf1eb4f;
+    outline: none;
+    transition: .5s;
+}
+
+button {
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 30px;
+    border: 2px solid #ecf1eb;
+    background-color: transparent;
+    color: #ecf1eb;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+
+button:hover {
+    background-color: #ecf1eb;
+    color: #3e8ca2;
+    transition: .2s;
+    box-shadow:  0 -2px 9px 5px #ecf1eb4f;
+}
+
+button:focus {
+    box-shadow:  0 -2px 9px 10px #ecf1eb4f;
+    outline: none;
+}
+
 
 .header {
     color: #ecf1eb;
