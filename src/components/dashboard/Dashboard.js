@@ -2,12 +2,16 @@ import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./dashboard.css";
+
+import VideoCont from "../layout/VideoCont"
 
 import { AuthContext } from "../../auth/auth";
 
 export default function Dashboard({ history, location }) {
   const { user, logoutUser } = useContext(AuthContext);
   const [userVideos, setUserVideos] = useState([])
+  const [rerender, setRerender] = useState(0)
 
   if (user){
     const query = new URLSearchParams(location.search)
@@ -28,22 +32,29 @@ export default function Dashboard({ history, location }) {
   }
 
 
+
   useEffect(() => {
     axios.get(`/api/items/get/${user.id}`)
       .then(data => {
         console.log(data.data.saved_timestamps)
         setUserVideos(data.data.saved_timestamps)
       })
-  }, []);
+  }, [rerender]);
 
   function deleteItem (id) {
-    console.log("deleted video's user id: " + user.id)
-    axios.delete(`/api/items/delete/${id}-${user.id}`)
-    .then(res => {
-      console.log(res)
-    })
-    .catch(err =>
-      console.log(err))
+    const r = window.confirm("Are you sure you want to delete this video?");
+    if (r === true) {
+      axios.delete(`/api/items/delete/${id}-${user.id}`)
+      .then(res => {
+        setRerender(rerender + 1)
+        console.log(rerender)
+        console.log(res)
+      })
+      .catch(err =>
+        console.log(err))
+    } else {
+      return;
+    }
   }
 
   return (
@@ -55,16 +66,13 @@ export default function Dashboard({ history, location }) {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
+          border: "2px solid black"
         }}
       >
         <div direction="row" align="center" justify="center">
           <div>
             <h4>
               <b>Welcome</b> {user.name.split(" ")[0]}
-              <p>
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
-              </p>
             </h4>
             <button
               onClick={e => {
@@ -75,11 +83,22 @@ export default function Dashboard({ history, location }) {
             >Logout</button>
             <div>
               {userVideos.map(video => (
-                <ol>
+                // <VideoCont 
+                // image={video.videoThumbnail}
+                // userTitle={video.title}
+                // notes={video.notes}
+                // origName={video.videoName}
+                // url={video.url}
+                // handleDelete={() => deleteItem(video._id)}
+
+                // />
+
                   <li><img src={video.videoThumbnail} width="200px" alt="video thumbnail"/>
                   {video.title}: {video.notes} <a href={video.url} target="black">Link</a>
                   <div onClick={() => deleteItem(video._id)}>X</div></li>
-                </ol>
+           
+                  
+               
               ))}
             </div>
           </div>
