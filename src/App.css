@@ -1,7 +1,7 @@
 .background {
-    /* position: fixed; */
+    /* position: absolute; */
     top: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(180deg, #a7d9e7 0%, #bde2ec 80%, rgba(236,241,235,1) 100%);
+    background: linear-gradient(180deg, rgb(88, 173, 197) 0%, rgb(135, 191, 204) 80%, rgba(236,241,235,1) 100%);
 }

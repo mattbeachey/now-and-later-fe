@@ -1,17 +1,19 @@
 .mainContainer {
-    height: 300px;
+    height: 200px;
     width: 95vw;
     margin-top: 15px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    background-color: rgba(195, 245, 188, 0.781);
     display: flex;
     justify-content: flex-start;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .thumbnail {
-    height: 300px;
+    height: 200px;
 }
 
 .contentCont{
-    border: 2px solid pink;
     flex-grow: 1;
 }

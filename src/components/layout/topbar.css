@@ -3,3 +3,16 @@
     height: 15vh;
     /* background-color: #bde2ec; */
 }
+
+.header {
+    color: #ecf1eb;
+    font-family: Calistoga;
+    font-size: 80px;
+    text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+    .header {
+        font-size: 30px;
+    }
+}

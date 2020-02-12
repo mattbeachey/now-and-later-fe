@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import axios from "axios";
 
 // Health Check 
-axios.get("/ping").then(() => {
+axios.get("https://now-and-later-backend.herokuapp.com/ping").then(() => {
     console.log("should be working")
 }).catch(()=> {
     console.log("what happened")

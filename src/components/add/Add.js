@@ -41,7 +41,7 @@ export default function Add({ history }) {
         // when redirected to /add, query params come through with the url
         if (user) {
             history.push("/add" + window.location.search);
-            axios.put(`/api/items/add/${user.id}`, videoData).then((res) => {
+            axios.put(`https://now-and-later-backend.herokuapp.com/api/items/add/${user.id}`, videoData).then((res) => {
                 console.log(res)
                 // chrome.runtime.sendMessage({
                 //     data: "Hello popup, how are you"
@@ -61,6 +61,7 @@ export default function Add({ history }) {
 
     return (
         <>
+        <div className="mainCont2">
             {/* <div>Hello {user.name}, your video timestamp has been saved! See all saved timestamps here.</div>
             <button
                 onClick={() => {
@@ -78,6 +79,7 @@ export default function Add({ history }) {
                 }}
                 label="Logout"
             >Logout</button> */}
+            </div>
         </>
 
     )
