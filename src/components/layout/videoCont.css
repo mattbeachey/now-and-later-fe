@@ -1,0 +1,17 @@
+.mainContainer {
+    height: 300px;
+    width: 90vw;
+    margin-top: 15px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.thumbnail {
+    height: 300px;
+}
+
+.contentCont{
+    border: 2px solid pink;
+    flex-grow: 1;
+}

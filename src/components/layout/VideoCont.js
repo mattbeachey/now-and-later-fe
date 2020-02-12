@@ -2,21 +2,28 @@ import React from "react";
 import "./videoCont.css";
 
 
-function VideoCont() {
+function VideoCont({ image, userTitle, notes, origName, url, tags, handleDelete, handleSetVideos, handleFilter }) {
 
-    
+
     return (
-        <div></div>
-        // <div className={carddd}>
-        //     <div className="card-title">
-        //         <h1 className="name">{first} {last}</h1>
-        //     </div>
-        //     <h1 className="clickable" onClick={handleClick}>{department}</h1>
-        //     <h2 className="clickable" onClick={handleClick2}>{city}, {country}</h2>
-        //     <h3>{email} </h3>
-        //     <h3>{phone} </h3>
-        //     <img className="image" src={image} alt="Employee Portrait" />
-        // </div>
+        <div className="mainContainer">
+            <div className="imgCont">
+                <a href={url} target="blank">
+                    <img className="thumbnail" src={image} alt="video thumbnail" />
+                </a>
+            </div>
+            <div className="contentCont">
+                <h5>{userTitle}</h5>
+                <h5>{origName}</h5>
+                <p>{notes}</p>
+                <a href={url} target="blank">Link</a>
+                {tags.map(tag => (
+                    <div onClick={ () => handleSetVideos(handleFilter(tag))}>{tag}</div>
+                ))}
+                <p onClick={handleDelete}>X</p>
+            </div>
+        </div>
+
     )
 }
 

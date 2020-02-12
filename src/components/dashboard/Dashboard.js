@@ -13,6 +13,7 @@ export default function Dashboard({ history, location }) {
   const [userVideos, setUserVideos] = useState([])
   const [rerender, setRerender] = useState(0)
 
+  //handles passing query parameters with redirects
   if (user){
     const query = new URLSearchParams(location.search)
     console.log("The Query" + query)
@@ -32,7 +33,7 @@ export default function Dashboard({ history, location }) {
   }
 
 
-
+  //sets saved user data to render, renders when "rerender" changed
   useEffect(() => {
     axios.get(`/api/items/get/${user.id}`)
       .then(data => {
@@ -56,17 +57,23 @@ export default function Dashboard({ history, location }) {
       return;
     }
   }
+  
+  function filterByTag(tag){
+    const array = userVideos.filter(function (video){
+      return  video.tags.indexOf(tag) > -1
+    })
+    return array 
+  }
 
   return (
     <>
       <div
         style={{
-          height: "80vh",
+          minHeight: "80vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          border: "2px solid black"
         }}
       >
         <div direction="row" align="center" justify="center">
@@ -83,19 +90,21 @@ export default function Dashboard({ history, location }) {
             >Logout</button>
             <div>
               {userVideos.map(video => (
-                // <VideoCont 
-                // image={video.videoThumbnail}
-                // userTitle={video.title}
-                // notes={video.notes}
-                // origName={video.videoName}
-                // url={video.url}
-                // handleDelete={() => deleteItem(video._id)}
+                <VideoCont 
+                image={video.videoThumbnail}
+                userTitle={video.title}
+                notes={video.notes}
+                origName={video.videoName}
+                url={video.url}
+                tags={video.tags}
+                handleDelete={() => deleteItem(video._id)}
+                handleSetVideos={setUserVideos}
+                handleFilter={filterByTag}
+                />
 
-                // />
-
-                  <li><img src={video.videoThumbnail} width="200px" alt="video thumbnail"/>
-                  {video.title}: {video.notes} <a href={video.url} target="black">Link</a>
-                  <div onClick={() => deleteItem(video._id)}>X</div></li>
+                  // <li><img src={video.videoThumbnail} width="200px" alt="video thumbnail"/>
+                  // {video.title}: {video.notes} <a href={video.url} target="black">Link</a>
+                  // <div onClick={() => deleteItem(video._id)}>X</div></li>
            
                   
                

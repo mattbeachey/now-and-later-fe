@@ -48,7 +48,11 @@ export default function Add({ history }) {
                 // }, function (response) {
                 //     console.dir(response);
                 // });
-                window.close();
+                // window.close();
+                setTimeout(function(){
+                    history.push("/dashboard");
+                }, 2000)
+                
             }).catch(() => {
                 console.log("what happened")
             })
@@ -57,7 +61,7 @@ export default function Add({ history }) {
 
     return (
         <>
-            <div>Hello {user.name}, your video timestamp has been saved! See all saved timestamps here.</div>
+            {/* <div>Hello {user.name}, your video timestamp has been saved! See all saved timestamps here.</div>
             <button
                 onClick={() => {
                     axios.put(`/api/items/add/${user.id}`, videoData).then((res) => {
@@ -73,7 +77,7 @@ export default function Add({ history }) {
                     logoutUser();
                 }}
                 label="Logout"
-            >Logout</button>
+            >Logout</button> */}
         </>
 
     )
