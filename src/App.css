@@ -1,0 +1,7 @@
+.background {
+    /* position: fixed; */
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, #a7d9e7 0%, #bde2ec 80%, rgba(236,241,235,1) 100%);
+}

@@ -14,9 +14,10 @@ import { Auth } from "./auth/auth";
 
 import "./App.css";
 
-export default function() {
+export default function () {
   return (
-      <Auth>
+    <Auth>
+      <div className="background">
         <Router>
           <div className="App">
             {/* <Navbar /> */}
@@ -24,11 +25,12 @@ export default function() {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Switch>
-              <PrivateRoute path="/add"  component={Add} />
+              <PrivateRoute path="/add" component={Add} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
           </div>
         </Router>
-      </Auth>
+      </div>
+    </Auth>
   );
 }

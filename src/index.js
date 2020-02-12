@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import axios from "axios";
 
 // Health Check 
-axios.get("http://localhost:5000/ping").then(() => {
+axios.get("/ping").then(() => {
     console.log("should be working")
 }).catch(()=> {
     console.log("what happened")

@@ -18,7 +18,7 @@ export const logoutUser = setUser => {
 
 export const loginUser = (setUser, setErrors) => userData => {
   axios
-    .post("http://localhost:5000/api/users/login", userData)
+    .post("/api/users/login", userData)
     .then(res => {
       // Save to localStorage
 
@@ -40,7 +40,7 @@ export const loginUser = (setUser, setErrors) => userData => {
 
 export const registerUser = setErrors => (userData, history) => {
   axios
-    .post("http://localhost:5000/api/users/register", userData)
+    .post("/api/users/register", userData)
     .then(res => history.push("/login" + window.location.search))
     .catch(err => {
       console.log(err);

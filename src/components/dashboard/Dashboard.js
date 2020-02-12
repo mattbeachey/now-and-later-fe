@@ -5,6 +5,7 @@ import axios from "axios";
 import "./dashboard.css";
 
 import VideoCont from "../layout/VideoCont"
+import Topbar from "../layout/Topbar";
 
 import { AuthContext } from "../../auth/auth";
 
@@ -60,6 +61,7 @@ export default function Dashboard({ history, location }) {
   
   function filterByTag(tag){
     const array = userVideos.filter(function (video){
+      console.log(video.tags.indexOf(tag))
       return  video.tags.indexOf(tag) > -1
     })
     return array 
@@ -67,16 +69,8 @@ export default function Dashboard({ history, location }) {
 
   return (
     <>
-      <div
-        style={{
-          minHeight: "80vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-        }}
-      >
-        <div direction="row" align="center" justify="center">
+      <Topbar />
+      <div className="mainCont">
           <div>
             <h4>
               <b>Welcome</b> {user.name.split(" ")[0]}
@@ -101,17 +95,9 @@ export default function Dashboard({ history, location }) {
                 handleSetVideos={setUserVideos}
                 handleFilter={filterByTag}
                 />
-
-                  // <li><img src={video.videoThumbnail} width="200px" alt="video thumbnail"/>
-                  // {video.title}: {video.notes} <a href={video.url} target="black">Link</a>
-                  // <div onClick={() => deleteItem(video._id)}>X</div></li>
-           
-                  
-               
               ))}
             </div>
           </div>
-        </div>
       </div>
     </>
   );
