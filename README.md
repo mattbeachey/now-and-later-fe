@@ -4,6 +4,8 @@ Do you learn a lot from youtube? Ever find a valuable tidbit 30 minutes into a t
 
 Once you’ve saved a video section, it will show up in the web app alongside all of your other saved sections. Search by title or filter by tags for easy organizing. Add notes to a video section if you like. Delete a video section once you no longer need it. 
 
+Live link: https://now-and-later.netlify.com/
+
 ## Chrome Extension
 
 This app works with a corresponding Google Chrome extension. The extension pulls data from Youtube videos and sends it to the web app for storage. 
