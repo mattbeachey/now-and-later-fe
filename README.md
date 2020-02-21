@@ -13,7 +13,7 @@ This app works with a corresponding Google Chrome extension. The extension pulls
 
 ## Screenshots / Gifs in action
 The gif below shows how a user can add a video at a specific timestamp. If not already logged in, the user will be prompted to log in or create an account, after which the saved video and user data will be added to the user's account.
-![Demonstration GIF](./assets/now-and-later-1.GIF)
+![Demonstration GIF](./assets/now-and-later-1.gif)
 
 
 ## Technology Used
