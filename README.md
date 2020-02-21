@@ -12,7 +12,17 @@ This app works with a corresponding Google Chrome extension. The extension pulls
 
 
 ## Screenshots / Gifs in action
+The gif below shows how a user can add a video at a specific timestamp. If not already logged in, the user will be prompted to log in or create an account, after which the saved video and user data will be added to the user's account.
+![Demonstration GIF](./assets/now-and-later-1.GIF)
 
+
+## Technology Used
+The front end of the web app is a single-page React app. The backend is a Node-Express server using Mongoose to connect to a MongoDB database and Passport Authentication. The plugin is a Google Chrome extension. 
+Back end repo: https://github.com/mattbeachey/now-and-later-be
+Chrome Extension repo: https://github.com/mattbeachey/now-later-chrome-extension
+
+## Installation
+Users can download the Now and Later Chrome extension from the chrome store and install it right in their browser. From there, after saving their first video they will be prompted to create an account or sign in. (official Chrom Extension coming in March 2020)
 
 ## Challenges
 Developing a Chrome extension presented an interesting set of challenges. First, setting up authentication within an extension itself is a rather complicated process, and ultimately I opted to leave the extension itself merely a method to pass the desired information to an authenticated source, without requiring the user to log into the extension. I solved this by sending the users data (the youtube timestamp as well as user-added title, notes, and tags) to a designated "add" page on the web app through query paramaters. These query paramaters have to be parsed and pushed through several re-directs to assure that they will persist if the user has not yet logged in or registered for the app. 
